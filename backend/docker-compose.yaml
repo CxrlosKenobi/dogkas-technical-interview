@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  api-services:
+    container_name: dogkas-api-services-technical-test
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+      - '9290:9229'
+    command: npm run start
+    networks:
+      - dogkas-network
+    depends_on:
+      - database
+  database:
+    container_name: dogkas-services-technical-test-mysql
+    image: mysql:8.0
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./docker/provision/mysql/init:/docker-entrypoint-initdb.d
+      - /data/db
+    restart: always
+    networks:
+      - dogkas-network
+
+networks:
+  dogkas-network:
+    driver: host
+    name: dogkas-network
+    external: true
