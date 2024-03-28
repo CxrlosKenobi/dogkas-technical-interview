@@ -1,0 +1,33 @@
+//
+#MapsComponent-wrapper {
+  position: relative;
+  max-height: 100%;
+  width: 100%;
+
+  google-map {
+    width: 100%;
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background-color: transparent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      bottom: -2px;
+      left: -2px;
+      border: 2px solid #121212;
+      border-radius: 20px;
+      pointer-events: none;
+      box-shadow: 0 0 0 10px #121212;
+    }
+  }
+}

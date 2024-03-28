@@ -1,0 +1,14 @@
+//
+#AppContent {
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 20px;
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+  overflow: hidden;
+}
+
+ion-toolbar {
+  --min-height: 80px;
+}
