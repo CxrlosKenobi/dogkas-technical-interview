@@ -19,6 +19,9 @@
           <ion-col size="4">
             <ion-toolbar>
               <div class="heading-wrapper">
+                <ion-button class="refetch-btn" (click)="populateAndLoadServices()" [disabled]="isLoading" fill="clear" shape="round">
+                  <ion-icon name="refresh-outline"></ion-icon>
+                </ion-button>
                 <div>
                   <ion-icon size="large" name="globe-outline" />
                 </div>
@@ -33,9 +36,6 @@
                 </ion-popover>
               </div>
             </ion-toolbar>
-            <ion-button (click)="populateAndLoadServices()" [disabled]="isLoading" fill="clear" mode="ios" shape="round">
-              <ion-icon name="refresh-outline"></ion-icon>
-            </ion-button>
             @defer (when !isLoading; prefetch on idle) {
               <section class="list-wrapper">
                 <ion-list class="services-list">
@@ -46,8 +46,14 @@
                       </ion-avatar>
                       <ion-label button detail="true" class="ion-text-wrap">
                         <h3>{{ entry.service_name }}</h3>
+                        <p>{{ entry.person_name }}</p>
                         <p>{{ entry.latitude }}, {{ entry.longitude }}</p>
                       </ion-label>
+                      @if (entry.id === chosenServiceId) {
+                        <ion-chip color="success">
+                          <span>Selected</span>
+                        </ion-chip>
+                      }
                     </ion-item>
                   } @empty {
                     @if (!isLoading) {

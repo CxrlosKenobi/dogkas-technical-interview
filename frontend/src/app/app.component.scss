@@ -20,6 +20,12 @@ ion-toolbar {
     justify-content: center;
     position: relative;
 
+    .refetch-btn {
+      margin-right: auto;
+      position: absolute;
+      left: 0px;
+    }
+
     & div {
       width: fit-content;
       width: 40px;
@@ -68,14 +74,37 @@ ion-grid {
 
 .services-list {
   overflow-y: auto;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 100px);
 
   ion-item {
     --background: #121212;
+    // border: 1px solid white;
 
     &:hover {
       --background: #252525;
+      transition: all 200ms;
       cursor: pointer;
+    }
+
+    ion-label {
+      h3 {
+        font-family: Quicksand, sans-serif;
+        font-weight: bold;
+        margin-bottom: 3px;
+      }
+
+      > p:nth-child(2) {
+        margin: 0;
+      }
+
+      > :last-child {
+        font-size: .8rem;
+      }
+    }
+
+    ion-chip span {
+      font-family: QuickSand, sans-serif;
+      font-weight: 600;
     }
   }
 }

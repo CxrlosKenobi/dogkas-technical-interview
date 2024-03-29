@@ -12,7 +12,7 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol, IonList, IonItem, IonAvatar, IonLabel, IonSpinner, IonAlert, IonSkeletonText, IonPopover } from "@ionic/angular/standalone";
+  IonCol, IonList, IonItem, IonAvatar, IonLabel, IonSpinner, IonAlert, IonSkeletonText, IonPopover, IonChip } from "@ionic/angular/standalone";
 //
 import { MapsComponent } from "./maps/maps.component";
 import { ApiService } from "./api.service";
@@ -21,7 +21,7 @@ import type { IService, IMarker } from "./interfaces";
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [IonPopover, 
+  imports: [IonChip, IonPopover, 
     IonSkeletonText,
     IonAlert,
     IonSpinner,
@@ -97,6 +97,7 @@ export class AppComponent {
         next: (res: any) => {
           this.services = res;
           this.pointList = this.constructPointList(this.services);
+          this.chosenServiceId = null;
           this.isLoading = false;
         }
       })
