@@ -12,7 +12,7 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol, IonList, IonItem, IonAvatar, IonLabel, IonSpinner, IonAlert, IonSkeletonText } from "@ionic/angular/standalone";
+  IonCol, IonList, IonItem, IonAvatar, IonLabel, IonSpinner, IonAlert, IonSkeletonText, IonPopover } from "@ionic/angular/standalone";
 //
 import { MapsComponent } from "./maps/maps.component";
 import { ApiService } from "./api.service";
@@ -21,7 +21,7 @@ import type { IService, IMarker } from "./interfaces";
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [
+  imports: [IonPopover, 
     IonSkeletonText,
     IonAlert,
     IonSpinner,
