@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import { GoogleMap, MapMarker } from "@angular/google-maps";
 //
 import type { IMarker } from "../interfaces";
@@ -16,6 +16,8 @@ export class MapsComponent {
   public mapOptions;
   public markerOptions;
 
+  @ViewChild(GoogleMap) map!: GoogleMap;
+
   constructor() {
     this.mapOptions = {
       center: { lat: -15.397, lng: -20.644 },
@@ -29,6 +31,14 @@ export class MapsComponent {
     this.markerOptions = {
       draggable: false,
       title: "Marker title",
+      icon: {
+        url: "../../assets/icon/map-red-marker.png",
+        scaledSize: {
+          width: 40,
+          height: 40,
+          equals: () => true
+        },
+      }
     };
   }
 
@@ -38,5 +48,10 @@ export class MapsComponent {
 
   get pointList(): IMarker[] {
     return this._pointList;
+  }
+
+  public panToMarker(coords: google.maps.LatLngLiteral) {
+    this.map.panTo(coords);
+    console.log("map", this.map)
   }
 }

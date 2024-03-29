@@ -40,13 +40,13 @@
               <section class="list-wrapper">
                 <ion-list class="services-list">
                   @for (entry of services; track entry.id) {
-                    <ion-item>
+                    <ion-item (click)="flyToMarker(entry)">
                       <ion-avatar slot="start">
-                        <img [src]="baseimg" alt="alt here" />
+                        <img [src]="baseImg + entry.id" [alt]="entry.service_name"/>
                       </ion-avatar>
                       <ion-label button detail="true" class="ion-text-wrap">
                         <h3>{{ entry.service_name }}</h3>
-                        <p>lat: {{ entry.latitude }} ~ lon: {{ entry.longitude }}</p>
+                        <p>{{ entry.latitude }}, {{ entry.longitude }}</p>
                       </ion-label>
                     </ion-item>
                   } @empty {

@@ -1,4 +1,4 @@
-import { Component, inject } from "@angular/core";
+import { Component, inject, ViewChild } from "@angular/core";
 import {
   IonApp,
   IonRouterOutlet,
@@ -57,8 +57,10 @@ export class AppComponent {
   public isLoading = false;
   public error = null;
   public dummyArray = new Array(7);
-  public baseimg = "https://play-lh.googleusercontent.com/yPtnkXQAn6yEahOurxuYZL576FDXWn3CqewVcEWJsXlega_nSiavBvmaXwfTGktGlQ"
-  
+  public baseImg = "https://dummyimage.com/500x500/000/fff&text=";
+
+  @ViewChild(MapsComponent) mapComponent!: MapsComponent;
+
   constructor() {
     this.loadServices();
   }
@@ -70,7 +72,6 @@ export class AppComponent {
         lng: parseFloat(service.longitude)
       };
     });
-
   }
 
   loadServices() {
@@ -97,5 +98,13 @@ export class AppComponent {
           this.isLoading = false;
         }
       })
+  }
+
+  flyToMarker(service: IService) {
+    const coords = {
+      lat: parseFloat(service.latitude),
+      lng: parseFloat(service.longitude)
+    };
+    this.mapComponent.panToMarker(coords);
   }
 }

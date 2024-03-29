@@ -72,6 +72,11 @@ ion-grid {
 
   ion-item {
     --background: #121212;
+
+    &:hover {
+      --background: #252525;
+      cursor: pointer;
+    }
   }
 }
 

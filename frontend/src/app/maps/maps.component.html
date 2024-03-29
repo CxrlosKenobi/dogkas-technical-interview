@@ -5,7 +5,7 @@
     [options]="mapOptions"
   >
     @for (position of pointList; track position) {
-      <map-marker [position]="position" [options]="markerOptions" title="Click to zoom"></map-marker>
+      <map-marker [position]="position" [options]="markerOptions" ></map-marker>
     }
   </google-map>
   <div class="map-overlay"></div>
