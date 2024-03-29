@@ -36,7 +36,7 @@
             <ion-button (click)="populateAndLoadServices()" [disabled]="isLoading" fill="clear" mode="ios" shape="round">
               <ion-icon name="refresh-outline"></ion-icon>
             </ion-button>
-            @defer (when !isLoading) {
+            @defer (when !isLoading; prefetch on idle) {
               <section class="list-wrapper">
                 <ion-list class="services-list">
                   @for (entry of services; track entry.id) {

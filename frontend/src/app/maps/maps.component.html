@@ -4,8 +4,12 @@
     width="100%"
     [options]="mapOptions"
   >
-    @for (position of pointList; track position) {
-      <map-marker [position]="position" [options]="markerOptions" ></map-marker>
+    @for (point of pointList; track point.id) {
+      <map-marker
+        [position]="point.position"
+        [options]="handleMarkerOptions(point)"
+      >
+      </map-marker>
     }
   </google-map>
   <div class="map-overlay"></div>

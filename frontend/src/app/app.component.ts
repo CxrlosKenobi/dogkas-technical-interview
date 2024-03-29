@@ -49,9 +49,10 @@ import type { IService, IMarker } from "./interfaces";
 })
 export class AppComponent {
   private apiService = inject(ApiService);
-  
+
   protected services: IService[] = [];
-  
+
+  public chosenServiceId: number | null = null;
   public pointList: IMarker[] = [];
   public menuType: string = "push";
   public isLoading = false;
@@ -66,12 +67,13 @@ export class AppComponent {
   }
 
   constructPointList(services: IService[]) {
-    return services.map((service) => {
-      return {
+    return services.map((service) => ({
+      id: service.id,
+      position: {
         lat: parseFloat(service.latitude),
-        lng: parseFloat(service.longitude)
-      };
-    });
+        lng: parseFloat(service.longitude),
+      }
+    }));
   }
 
   loadServices() {
@@ -105,6 +107,7 @@ export class AppComponent {
       lat: parseFloat(service.latitude),
       lng: parseFloat(service.longitude)
     };
-    this.mapComponent.panToMarker(coords);
+    this.chosenServiceId = service.id;
+    this.mapComponent.panToMarker(coords, service.id);
   }
 }

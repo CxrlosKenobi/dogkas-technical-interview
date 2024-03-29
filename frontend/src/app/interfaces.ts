@@ -12,6 +12,9 @@ export interface IService {
 }
 
 export interface IMarker {
-  lat: number;
-  lng: number;
+  id: number;
+  position: {
+    lat: number;
+    lng: number;
+  };
 }

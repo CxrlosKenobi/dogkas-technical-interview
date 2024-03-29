@@ -12,11 +12,11 @@ import type { IMarker } from "../interfaces";
 })
 export class MapsComponent {
   private _pointList: IMarker[] = [];
+  private chosenServiceId: number | null = null;
 
   public mapOptions;
-  public markerOptions;
 
-  @ViewChild(GoogleMap) map!: GoogleMap;
+  @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
 
   constructor() {
     this.mapOptions = {
@@ -27,31 +27,30 @@ export class MapsComponent {
         mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain"],
       },
     };
-
-    this.markerOptions = {
-      draggable: false,
-      title: "Marker title",
-      icon: {
-        url: "../../assets/icon/map-red-marker.png",
-        scaledSize: {
-          width: 40,
-          height: 40,
-          equals: () => true
-        },
-      }
-    };
   }
 
   @Input() set pointList(value: IMarker[]) {
     this._pointList = value;
   }
 
+  handleMarkerOptions(marker: IMarker) {
+    return {
+      draggable: false,
+      label: {
+        text: marker.id.toString(),
+        color: (marker.id === this.chosenServiceId) ? "white" : "black",
+        fontWeight: "bold",
+        fontSize: "14px",
+      },
+    }
+  }
+
   get pointList(): IMarker[] {
     return this._pointList;
   }
 
-  public panToMarker(coords: google.maps.LatLngLiteral) {
+  public panToMarker(coords: google.maps.LatLngLiteral, chosenServiceId: number) {
+    this.chosenServiceId = chosenServiceId;
     this.map.panTo(coords);
-    console.log("map", this.map)
   }
 }
