@@ -1,5 +1,6 @@
 import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { delay } from "rxjs/operators";
 
 const API_URL = "http://localhost:3000";
 
@@ -12,6 +13,8 @@ export class ApiService {
   constructor() { }
 
   getServices() {
-    return this.http.get(`${API_URL}/services`);
+    return this.http
+      .get(`${API_URL}/services`)
+      .pipe(delay(400)); // simulates network latency for skeleton loading
   }
 }

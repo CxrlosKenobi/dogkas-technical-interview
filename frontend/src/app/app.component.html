@@ -1,10 +1,75 @@
 <ion-app>
-  <ion-toolbar>
-    <ion-title>Maps API</ion-title>
-  </ion-toolbar>
-  <div id="AppContent">
-    <app-maps />
+  <!-- <ion-menu [type]="menuType" content-id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Maps API Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-menu-toggle>
+        <ion-button>Close the menu</ion-button>
+      </ion-menu-toggle>
+    </ion-content>
+  </ion-menu> -->
+
+  <div class="ion-page" id="main-content">
+    <ion-content id="AppContent">      
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-toolbar>
+              <ion-title>Maps API</ion-title>
+            </ion-toolbar>
+
+            @defer (when !isLoading) {
+              <ion-list>
+                @for (entry of services; track entry.id) {
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <img [src]="baseimg" alt="alt here" />
+                    </ion-avatar>
+                    <ion-label class="ion-text-wrap">
+                      <h3>{{ entry.service_name }}</h3>
+                    </ion-label>
+                  </ion-item>
+                } @empty {
+                  @if (!isLoading) {
+                    <ion-item lines="none">
+                      <ion-label class="ion-text-center">
+                        <h3>No services in the list</h3>
+                      </ion-label>
+                    </ion-item>
+                  }
+                }
+              </ion-list>
+            } @placeholder {
+              <ion-list class="ion-padding-top">
+                @for (i of dummyArray; track i) {
+                  <ion-item lines="none" class="ion-padding-bottom">
+                    <ion-avatar slot="start">
+                      <ion-skeleton-text></ion-skeleton-text>
+                    </ion-avatar>
+                    <ion-skeleton-text animated style="height: 40px" />
+                  </ion-item>
+                }
+              </ion-list>
+            } @error {
+              <ion-alert header="Error" [message]="error" [buttons]="['OK']" />
+            }
+
+          </ion-col>
+          <ion-col>
+            <app-maps />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- <div id="AppContent">
+        <app-maps /> -->
+        <!-- <ion-menu-toggle>
+          <ion-button>Open menu</ion-button>
+        </ion-menu-toggle> -->
+      <!-- </div> -->
+    </ion-content>
   </div>
-  <!-- <ion-router-outlet>
-  </ion-router-outlet> -->
 </ion-app>
