@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "migration": "knex migrate:latest",
-    "seed": "knex seed:run"
+    "seed": "knex seed:run --specific=services_population.js"
   },
   "keywords": [
     "api"

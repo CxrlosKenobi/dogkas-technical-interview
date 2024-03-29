@@ -10,5 +10,13 @@
 }
 
 ion-toolbar {
-  --min-height: 80px;
+  --min-height: 70px;
+  text-align: center;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-col {
 }
