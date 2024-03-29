@@ -2,10 +2,10 @@
   <google-map
     height="97vh"
     width="100%"
-    [options]="options"
+    [options]="mapOptions"
   >
     @for (position of pointList; track position) {
-      <map-marker [position]="position" [options]="markerOptions" />
+      <map-marker [position]="position" [options]="markerOptions" title="Click to zoom"></map-marker>
     }
   </google-map>
   <div class="map-overlay"></div>

@@ -13,20 +13,27 @@ import type { IMarker } from "../interfaces";
 export class MapsComponent {
   private _pointList: IMarker[] = [];
 
-  public options;
-  public markerOptions = { draggable: false }
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  public mapOptions;
+  public markerOptions;
 
   constructor() {
-    this.options = {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
+    this.mapOptions = {
+      center: { lat: -15.397, lng: -20.644 },
+      zoom: 3,
+      mapTypeId: "hybrid",
+      mapTypeControlOptions: {
+        mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain"],
+      },
+    };
+
+    this.markerOptions = {
+      draggable: false,
+      title: "Marker title",
     };
   }
 
   @Input() set pointList(value: IMarker[]) {
     this._pointList = value;
-    console.log("pointList", this._pointList);
   }
 
   get pointList(): IMarker[] {

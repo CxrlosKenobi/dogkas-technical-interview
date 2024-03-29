@@ -49,6 +49,7 @@ import type { IService, IMarker } from "./interfaces";
 })
 export class AppComponent {
   private apiService = inject(ApiService);
+  
   protected services: IService[] = [];
   
   public pointList: IMarker[] = [];
@@ -56,11 +57,20 @@ export class AppComponent {
   public isLoading = false;
   public error = null;
   public dummyArray = new Array(6);
-
   public baseimg = "https://play-lh.googleusercontent.com/yPtnkXQAn6yEahOurxuYZL576FDXWn3CqewVcEWJsXlega_nSiavBvmaXwfTGktGlQ"
   
   constructor() {
     this.loadServices();
+  }
+
+  constructPointList(services: IService[]) {
+    return services.map((service) => {
+      return {
+        lat: parseFloat(service.latitude),
+        lng: parseFloat(service.longitude)
+      };
+    });
+
   }
 
   loadServices() {
@@ -70,16 +80,22 @@ export class AppComponent {
       .subscribe({
         next: (res: any) => {
           this.services = res;
-          this.constructPointList();
+          this.pointList = this.constructPointList(this.services);
           this.isLoading = false;
         }
       });
   }
 
-  constructPointList() {
-    console.log("services", this.services);
-    this.pointList = this.services.map((service) => {
-      return { lat: parseFloat(service.latitude), lng: parseFloat(service.longitude) };
-    });
+  populateAndLoadServices() {
+    this.isLoading = true;
+    this.apiService
+      .populateAndGetServices()
+      .subscribe({
+        next: (res: any) => {
+          this.services = res;
+          this.pointList = this.constructPointList(this.services);
+          this.isLoading = false;
+        }
+      })
   }
 }
