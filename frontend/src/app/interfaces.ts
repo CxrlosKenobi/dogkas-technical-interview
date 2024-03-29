@@ -10,3 +10,8 @@ export interface IService {
   latitude: string;
   longitude: string;
 }
+
+export interface IMarker {
+  lat: number;
+  lng: number;
+}

@@ -16,7 +16,7 @@ import {
 //
 import { MapsComponent } from "./maps/maps.component";
 import { ApiService } from "./api.service";
-import type { IService } from "./interfaces";
+import type { IService, IMarker } from "./interfaces";
 
 @Component({
   selector: "app-root",
@@ -49,12 +49,13 @@ import type { IService } from "./interfaces";
 })
 export class AppComponent {
   private apiService = inject(ApiService);
+  protected services: IService[] = [];
   
-  public services: IService[] = [];
+  public pointList: IMarker[] = [];
   public menuType: string = "push";
   public isLoading = false;
   public error = null;
-  public dummyArray = new Array(5);
+  public dummyArray = new Array(6);
 
   public baseimg = "https://play-lh.googleusercontent.com/yPtnkXQAn6yEahOurxuYZL576FDXWn3CqewVcEWJsXlega_nSiavBvmaXwfTGktGlQ"
   
@@ -69,8 +70,16 @@ export class AppComponent {
       .subscribe({
         next: (res: any) => {
           this.services = res;
+          this.constructPointList();
           this.isLoading = false;
         }
       });
+  }
+
+  constructPointList() {
+    console.log("services", this.services);
+    this.pointList = this.services.map((service) => {
+      return { lat: parseFloat(service.latitude), lng: parseFloat(service.longitude) };
+    });
   }
 }

@@ -20,16 +20,16 @@
             <ion-toolbar>
               <ion-title>Maps API</ion-title>
             </ion-toolbar>
-
             @defer (when !isLoading) {
-              <ion-list>
+              <ion-list class="services-list">
                 @for (entry of services; track entry.id) {
                   <ion-item>
                     <ion-avatar slot="start">
                       <img [src]="baseimg" alt="alt here" />
                     </ion-avatar>
-                    <ion-label class="ion-text-wrap">
+                    <ion-label button detail="true" class="ion-text-wrap">
                       <h3>{{ entry.service_name }}</h3>
+                      <p>lat: {{ entry.latitude }} ~ lon: {{ entry.longitude }}</p>
                     </ion-label>
                   </ion-item>
                 } @empty {
@@ -56,10 +56,9 @@
             } @error {
               <ion-alert header="Error" [message]="error" [buttons]="['OK']" />
             }
-
           </ion-col>
           <ion-col>
-            <app-maps />
+            <app-maps [pointList]="pointList" />
           </ion-col>
         </ion-row>
       </ion-grid>

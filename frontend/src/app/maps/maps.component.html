@@ -3,6 +3,10 @@
     height="97vh"
     width="100%"
     [options]="options"
-  />
+  >
+    @for (position of pointList; track position) {
+      <map-marker [position]="position" [options]="markerOptions" />
+    }
+  </google-map>
   <div class="map-overlay"></div>
 </section>
