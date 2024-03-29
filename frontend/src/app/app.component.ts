@@ -56,7 +56,7 @@ export class AppComponent {
   public menuType: string = "push";
   public isLoading = false;
   public error = null;
-  public dummyArray = new Array(6);
+  public dummyArray = new Array(7);
   public baseimg = "https://play-lh.googleusercontent.com/yPtnkXQAn6yEahOurxuYZL576FDXWn3CqewVcEWJsXlega_nSiavBvmaXwfTGktGlQ"
   
   constructor() {

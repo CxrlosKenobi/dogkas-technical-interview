@@ -37,27 +37,30 @@
               <ion-icon name="refresh-outline"></ion-icon>
             </ion-button>
             @defer (when !isLoading) {
-              <ion-list class="services-list">
-                @for (entry of services; track entry.id) {
-                  <ion-item>
-                    <ion-avatar slot="start">
-                      <img [src]="baseimg" alt="alt here" />
-                    </ion-avatar>
-                    <ion-label button detail="true" class="ion-text-wrap">
-                      <h3>{{ entry.service_name }}</h3>
-                      <p>lat: {{ entry.latitude }} ~ lon: {{ entry.longitude }}</p>
-                    </ion-label>
-                  </ion-item>
-                } @empty {
-                  @if (!isLoading) {
-                    <ion-item lines="none">
-                      <ion-label class="ion-text-center">
-                        <h3>No services in the list</h3>
+              <section class="list-wrapper">
+                <ion-list class="services-list">
+                  @for (entry of services; track entry.id) {
+                    <ion-item>
+                      <ion-avatar slot="start">
+                        <img [src]="baseimg" alt="alt here" />
+                      </ion-avatar>
+                      <ion-label button detail="true" class="ion-text-wrap">
+                        <h3>{{ entry.service_name }}</h3>
+                        <p>lat: {{ entry.latitude }} ~ lon: {{ entry.longitude }}</p>
                       </ion-label>
                     </ion-item>
+                  } @empty {
+                    @if (!isLoading) {
+                      <ion-item lines="none">
+                        <ion-label class="ion-text-center">
+                          <h3>No services in the list</h3>
+                        </ion-label>
+                      </ion-item>
+                    }
                   }
-                }
-              </ion-list>
+                </ion-list>
+                <div class="fade-overlay"></div>
+              </section>
             } @placeholder (minimum 500ms) {
               <ion-list class="ion-padding-top">
                 @for (i of dummyArray; track i) {
