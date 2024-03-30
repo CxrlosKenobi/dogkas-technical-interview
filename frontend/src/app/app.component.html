@@ -1,19 +1,6 @@
 <ion-app>
-  <!-- <ion-menu [type]="menuType" content-id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Maps API Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-menu-toggle>
-        <ion-button>Close the menu</ion-button>
-      </ion-menu-toggle>
-    </ion-content>
-  </ion-menu> -->
-
   <div class="ion-page" id="main-content">
-    <ion-content id="AppContent">      
+    <ion-content>
       <ion-grid>
         <ion-row>
           <ion-col size="4">
@@ -60,10 +47,6 @@
                   </ion-item>
                 }
               </ion-list>
-            } @loading (minimum 1.5s) {
-              <p>
-                Heyy there! I am loading the services for you. Please wait a moment.
-              </p>
             } @error {
               <ion-alert header="Error" [message]="error" [buttons]="['OK']" />
             }
@@ -73,13 +56,6 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
-      <!-- <div id="AppContent">
-        <app-maps /> -->
-        <!-- <ion-menu-toggle>
-          <ion-button>Open menu</ion-button>
-        </ion-menu-toggle> -->
-      <!-- </div> -->
     </ion-content>
   </div>
 </ion-app>

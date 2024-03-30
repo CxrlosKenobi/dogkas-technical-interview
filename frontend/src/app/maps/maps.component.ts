@@ -16,6 +16,10 @@ export class MapsComponent {
 
   public mapOptions;
 
+  @Input() set pointList(value: IMarker[]) {
+    this._pointList = value;
+  }
+
   @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
 
   constructor() {
@@ -27,10 +31,6 @@ export class MapsComponent {
         mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain"],
       },
     };
-  }
-
-  @Input() set pointList(value: IMarker[]) {
-    this._pointList = value;
   }
 
   handleMarkerOptions(marker: IMarker) {
@@ -45,7 +45,7 @@ export class MapsComponent {
     }
   }
 
-  get pointList(): IMarker[] {
+  public get pointList(): IMarker[] {
     return this._pointList;
   }
 

@@ -11,7 +11,17 @@ import {
   IonIcon,
   IonGrid,
   IonRow,
-  IonCol, IonList, IonItem, IonAvatar, IonLabel, IonSpinner, IonAlert, IonSkeletonText, IonPopover, IonChip } from "@ionic/angular/standalone";
+  IonCol,
+  IonList,
+  IonItem,
+  IonAvatar,
+  IonLabel,
+  IonSpinner,
+  IonAlert,
+  IonSkeletonText,
+  IonPopover,
+  IonChip
+} from "@ionic/angular/standalone";
 //
 import { HeaderComponent } from "./header/header.component";
 import { MapsComponent } from "./maps/maps.component";

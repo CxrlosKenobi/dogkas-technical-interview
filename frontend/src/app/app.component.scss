@@ -1,21 +1,10 @@
 //
-#AppContent {
-  // box-sizing: border-box;
-  // margin: 5px;
-  // padding: 5px;
-  // border-radius: 20px;
-  // height: calc(100% - 10px);
-  // width: calc(100% - 10px);
-  // overflow: hidden;
-}
-
 ion-grid {
   height: 100%;
 }
 
 .list-wrapper {
   position: relative;
-
 }
 
 .services-list {
@@ -24,7 +13,6 @@ ion-grid {
 
   ion-item {
     --background: #121212;
-    // border: 1px solid white;
 
     &:hover {
       --background: #252525;
