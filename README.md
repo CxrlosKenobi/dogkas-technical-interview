@@ -44,7 +44,9 @@ yarn start
 
 Esto compilará la aplicación y la servirá en `http://localhost:4200`.
 
-*(opcional) Siguiendo [estos pasos](https://developers.google.com/maps/gmp-get-started) obtener una API Key de Google Maps y agregarla en el archivo `environment.ts` de la carpeta `frontend/src/environments`*.
+Siguiendo [estos pasos](https://developers.google.com/maps/gmp-get-started) obtener una API Key de Google Maps y agregarla en el archivo `environment.ts` de la carpeta `frontend/src/environments`.
+
+Finalmente actualiza la web y podrás comenzar a interactuar con tu aplicación.
 
 ## Troubleshooting
 
