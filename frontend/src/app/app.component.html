@@ -17,25 +17,7 @@
       <ion-grid>
         <ion-row>
           <ion-col size="4">
-            <ion-toolbar>
-              <div class="heading-wrapper">
-                <ion-button class="refetch-btn" (click)="populateAndLoadServices()" [disabled]="isLoading" fill="clear" shape="round">
-                  <ion-icon name="refresh-outline"></ion-icon>
-                </ion-button>
-                <div>
-                  <ion-icon size="large" name="globe-outline" />
-                </div>
-                <h1>Services Geolocation</h1>
-                <ion-icon id="header-info" name="information-circle-outline"></ion-icon>
-                <ion-popover trigger="header-info" triggerAction="hover" animated="true" arrow="true" mode="ios">
-                  <ng-template>
-                    <ion-content class="ion-padding">
-                      <p>Dogkas Technical Test</p>
-                    </ion-content>
-                  </ng-template>
-                </ion-popover>
-              </div>
-            </ion-toolbar>
+            <app-header (refetchServices)="populateAndLoadServices()" [isLoading]="isLoading" />
             @defer (when !isLoading; prefetch on idle) {
               <section class="list-wrapper">
                 <ion-list class="services-list">

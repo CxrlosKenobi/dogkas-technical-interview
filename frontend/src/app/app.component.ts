@@ -5,7 +5,6 @@ import {
   IonMenu,
   IonMenuToggle,
   IonTitle,
-  IonToolbar,
   IonHeader,
   IonContent,
   IonButton,
@@ -14,6 +13,7 @@ import {
   IonRow,
   IonCol, IonList, IonItem, IonAvatar, IonLabel, IonSpinner, IonAlert, IonSkeletonText, IonPopover, IonChip } from "@ionic/angular/standalone";
 //
+import { HeaderComponent } from "./header/header.component";
 import { MapsComponent } from "./maps/maps.component";
 import { ApiService } from "./api.service";
 import type { IService, IMarker } from "./interfaces";
@@ -21,7 +21,10 @@ import type { IService, IMarker } from "./interfaces";
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [IonChip, IonPopover, 
+  imports: [
+    HeaderComponent,
+    IonChip,
+    IonPopover,
     IonSkeletonText,
     IonAlert,
     IonSpinner,
@@ -37,7 +40,6 @@ import type { IService, IMarker } from "./interfaces";
     IonMenu,
     IonMenuToggle,
     IonHeader,
-    IonToolbar,
     IonTitle,
     IonApp,
     IonRouterOutlet,
