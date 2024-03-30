@@ -44,7 +44,7 @@ yarn start
 
 Esto compilará la aplicación y la servirá en `http://localhost:4200`.
 
-*(opcional) Siguiendo [estos pasos](https://github.com/angular/components/blob/main/src/google-maps/README.md#getting-the-api-key) obtener una API Key de Google Maps y agregarla en el archivo `environment.ts` de la carpeta `frontend/src/environments`*.
+*(opcional) Siguiendo [estos pasos](https://developers.google.com/maps/gmp-get-started) obtener una API Key de Google Maps y agregarla en el archivo `environment.ts` de la carpeta `frontend/src/environments`*.
 
 ## Troubleshooting
 
