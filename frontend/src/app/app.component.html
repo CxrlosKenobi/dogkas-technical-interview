@@ -52,7 +52,9 @@
             }
           </ion-col>
           <ion-col>
-            <app-maps [pointList]="pointList" />
+            @defer (prefetch on idle) {
+              <app-maps [pointList]="pointList" />
+            }
           </ion-col>
         </ion-row>
       </ion-grid>

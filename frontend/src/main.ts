@@ -13,6 +13,19 @@ if (environment.production) {
   enableProdMode();
 }
 
+function loadGoogleMapsScript(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsApiKey}&callback=initMap`;
+    script.defer = true;
+    script.async = true;
+
+    (window as any)["initMap"] = () => resolve();
+    script.onerror = () => reject("Google Maps script could not be loaded.");
+    document.head.appendChild(script);
+  });
+}
+
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -21,4 +34,10 @@ bootstrapApplication(AppComponent, {
     provideAnimationsAsync(),
     provideHttpClient()
   ]
+}).then(() => {
+  loadGoogleMapsScript().then(() => {
+    console.info("Google Maps script loaded successfully.");
+  }).catch((error) => {
+    console.error(error);
+  });
 });
